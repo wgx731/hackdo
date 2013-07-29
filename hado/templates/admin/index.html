@@ -1,10 +1,10 @@
 {% extends "admin/base_site.html" %}
 
-{% load i18n staticfiles %}
+{% load i18n compressed %}
 
 {% block extrastyle %}
 {{ block.super }}
-<link href="{% static "css/admin.min.css" %}" media="screen" rel="stylesheet" type="text/css" />
+{% compressed_css 'hado_admin_css' %}
 {% endblock %}
 
 {% block branding %}

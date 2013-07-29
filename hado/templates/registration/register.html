@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles %}
+{% load i18n compressed %}
 {% block title %}{% trans "New Account" %}{% endblock %}
 {% block header %}
 {% include "tools/top_icon.html" %}
@@ -37,5 +37,5 @@
 </div>
 {% endblock content %}
 {% block footer_js %}
-<script type="text/javascript" src="{% static "js/register.min.js" %}"></script>
+{% compressed_js 'hado_register_js' %}
 {% endblock footer_js %}

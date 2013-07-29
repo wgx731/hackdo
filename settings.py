@@ -43,6 +43,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'pipeline.middleware.MinifyHTMLMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -58,6 +60,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'south',
+    'pipeline',
     'django_coverage',
     'django_extensions',
     'lettuce.django',
@@ -194,6 +197,12 @@ COVERAGE_CODE_EXCLUDES = [
     'def get_absolute_url\(self\):',
     'from .* import .*', 'import .*', ]
 COVERAGE_USE_STDOUT = True
+
+# pipline settings
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+from utils.assets import *
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
 
 # if not on master, change database to sqlite3 for testing
 import sys
