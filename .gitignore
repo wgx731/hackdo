@@ -98,6 +98,7 @@ local_settings.py
 ## HackDo.gitignore
 ###################################################
 hado/media
+node_modules
 !.travis.yml
 coverage_report/
 test_hackdo

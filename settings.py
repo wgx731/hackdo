@@ -201,8 +201,8 @@ COVERAGE_USE_STDOUT = True
 # pipline settings
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 from utils.assets import *
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yui.YUICompressor'
+# Please 'npm install yuglify' in ROOT_PATH before you can use django-pipeline
+PIPELINE_YUGLIFY_BINARY = '%s/node_modules/yuglify/bin/yuglify' % ROOT_PATH
 
 # if not on master, change database to sqlite3 for testing
 import sys
